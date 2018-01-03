@@ -28,8 +28,8 @@ process.stdout.write('\x1Bc');
 //   .then(results => console.log(JSON.stringify(results, null, 4)))
 //   .catch( err => console.log( err ) );
 
-//#1 - Get all restaurants
-//knex.select().table('restaurants');
+// #1 - Get all restaurants
+knex.select().table('restaurants');
 
 //#2 - Get Italian restaurants
 // knex.select()
@@ -63,9 +63,49 @@ process.stdout.write('\x1Bc');
 
 //#7 - Italian restaurants in one of several zip codes 10012, 10013, or 10014 zip, alpha sorted
 // knex('restaurants')
-//   .select('id', 'name', 
+//   .select('id', 'name', 'address_zipcode')
+//   .where('cuisine','Italian')
+//   .whereIn('address_zipcode',['10012','10013','10014'])
+//   .limit(5)
+//   .orderBy('name','asc')
+//   .then(results => console.log(JSON.stringify(results, null, 4)));
 
+// #8 - knex
+// .insert([{name: 'Byte Cafe', borough: 'Brooklyn', cuisine: 'coffee', address_building_number: '123', address_street: 'Atlantic Avenue', address_zipcode: '11231'}],'id').into('restaurants')
+// .then(results => console.log(results));
 
+// knex('restaurants')
+//   .select('address_building_number','address_street','id')
+//   .where({address_building_number: '123'})
+//   .then(results => console.log(results));
+
+//#9 - knex
+//   .insert([{name: 'Cat Cafe', borough: 'Bronx', cuisine: 'coffee', address_building_number: '923', address_street: 'Grand Concourse', address_zipcode:'10710'}],'id').into('restaurants')
+//   .returning(['id','name'])
+//   .then(results => console.log(results));
+
+//#10 -  knex
+//   .insert([{name: 'Cat Cafe', borough: 'Bronx', cuisine: 'coffee', address_building_number: '923', address_street: 'Grand Concourse', address_zipcode:'10710'},{name: 'Hey Cafe', borough: 'Bronx', cuisine: 'coffee', address_building_number: '923', address_street: 'Grand Concourse', address_zipcode:'10710'},{name: 'Let Cafe', borough: 'Bronx', cuisine: 'coffee', address_building_number: '923', address_street: 'Grand Concourse', address_zipcode:'10710'}],'id').into('restaurants')
+//   .returning(['id','name'])
+//   .then(results => console.log(results));
+
+//#11 - knex ('restaurants')
+//   .where('nyc_restaurant_id', '30191841')
+//   .returning('name')
+//   .update({
+//     name: 'DJ Reynolds Pub and Restaurant1'
+//   })
+//   .then(results => console.log(results));
+ 
+// #12 - knex('grades')
+//   .where('id', '10')
+//   .del()
+//   .then(results => console.log(results));
+
+// #13 - knex('restaurants')
+//   .where('id', '22')
+//   .del()
+//   .then(results => console.log(results));
 
 // Destroy the connection pool
 knex.destroy().then(() => {

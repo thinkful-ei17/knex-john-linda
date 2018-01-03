@@ -3,7 +3,10 @@
 const express = require('express');
 
 const { DATABASE, PORT } = require('./config');
-const knex = require('knex')(DATABASE);
+const knex = require('knex')({
+  client: 'pg',
+  connection: 'postgres://rgxxvnxt:PFi5DU8d1lrU-j3ZaoYBoEJcsacY64vY@baasu.db.elephantsql.com:5432/rgxxvnxt'
+});
 
 const app = express();
 
