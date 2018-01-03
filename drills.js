@@ -29,7 +29,7 @@ process.stdout.write('\x1Bc');
 //   .catch( err => console.log( err ) );
 
 // #1 - Get all restaurants
-knex.select().table('restaurants');
+// knex.select().table('restaurants');
 
 //#2 - Get Italian restaurants
 // knex.select()
