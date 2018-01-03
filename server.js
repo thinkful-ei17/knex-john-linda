@@ -32,9 +32,11 @@ const app = express();
 
 app.post('/restaurants/', jsonParser, (req, res) => {
   knex
-    .insert([{name: req.body.name, borough: req.body.borough, cuisine: req.body.cuisine}],'id').into('restaurants')
+    .insert([{name: req.body.name, borough: req.body.borough, cuisine: req.body.cuisine, grades: forEach([{grade: req.body.grade}])},'id').into('restaurants')
     .then(results => res.json(results));
 });
+
+//loop through grades; insert? forEach 
 
 //in express - 3 ways to send info; what are 3 ways to receive
 //params is from paramatized routing ex. /restaurants/:id
